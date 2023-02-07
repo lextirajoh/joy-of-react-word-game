@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import { sample } from '../../utils';
 import { WORDS } from '../../data';
 import Form from './Form';
@@ -10,10 +9,10 @@ const answer = sample(WORDS);
 // To make debugging easier, we'll log the solution in the console.
 console.info({ answer });
 
-function Game() {
-  const [attempts, setAttempts] = useState([]);
+export default function Game() {
+  const [attempts, setAttempts] = useState<Attempts>([]);
 
-  function handleAddAttempt(input) {
+  function handleAddAttempt(input: string) {
     const newAttempt = {
       label: input,
       id: crypto.randomUUID(),
@@ -24,10 +23,13 @@ function Game() {
 
   return (
     <>
-      <Results attempts={attempts}/>
+      <Results attempts={attempts} />
       <Form handleAddAttempt={handleAddAttempt} />
     </>
   );
 }
 
-export default Game;
+type Attempts = {
+  label: string;
+  id: string;
+}[];
