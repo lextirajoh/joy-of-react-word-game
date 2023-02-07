@@ -3,7 +3,7 @@ export const sample = (arr) => {
 };
 
 export const range = (start, end, step = 1) => {
-  let output = [];
+  let output:number[] = [];
   if (typeof end === 'undefined') {
     end = start;
     start = 0;
